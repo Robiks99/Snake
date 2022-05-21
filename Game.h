@@ -6,6 +6,7 @@
 
 class Game{
 public:
+    Game();
     Game(const char* title, int xpos, int ypos, int width, int height);
     ~Game();
 
