@@ -1,3 +1,4 @@
+#define SDL_MAIN_HANDLED
 #include "main.h"
 
 int main(int argc, const char* argv[]){
@@ -5,7 +6,7 @@ int main(int argc, const char* argv[]){
     game = new Game("snake",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,620,480);
     while(gameState != EXIT){
         while(gameState == GAME){
-            game->Event();
+            game->Event(gameState);
             game->Update();
             game->Render();
         }

@@ -3,6 +3,7 @@
 
 #include<SDL2/SDL.h>
 #include<stdio.h>
+#include"GameState.h"
 
 class Game{
 public:
@@ -10,7 +11,7 @@ public:
     Game(const char* title, int xpos, int ypos, int width, int height);
     ~Game();
 
-    void Event();
+    void Event(GameState &gameState);
     void Update();
     void Render();
 private:
