@@ -9,6 +9,7 @@ public:
     Snake(SDL_Window* Window, SDL_Renderer* Renderer);
     ~Snake();
 
+    SDL_Rect* GetRect(){return rect;}
     void Event(SDL_Event &event);
     void Update();
     void Render();
