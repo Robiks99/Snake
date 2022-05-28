@@ -7,5 +7,10 @@
 GameState gameState;
 Game* game;
 
+SDL_Window* window;
+SDL_Renderer* renderer;
+
+static void WaitForFrame(int argFPS);
+
 
 #endif
