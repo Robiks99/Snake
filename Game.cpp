@@ -1,12 +1,15 @@
 #include"Game.h"
 
-Game::Game(const char* title, int xpos, int ypos, int width, int height){
+Game::Game(SDL_Window* Window, SDL_Renderer* Renderer){
+    window = Window;
+    renderer = Renderer;
+
     //Initialize SDL
         if(SDL_Init(SDL_INIT_EVERYTHING) == 0){//Initialize SDL
             printf("Subsystem initialized.\n");
         
 
-        window = SDL_CreateWindow(title, xpos, ypos, width, height, 0);//Initialize Window
+        window = SDL_CreateWindow("snake",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,640,480,0);//Initialize Window
         if(window){
             printf("Window initialized.\n");
         }
@@ -17,7 +20,8 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height){
         }
         //SDL_SetWindowBordered( window, SDL_FALSE );//Disable window top bar
 
-        
+        //initialize Objects
+        snake = new Snake(window, renderer);
     }
     else{
         
@@ -36,13 +40,27 @@ void Game::Event(GameState &gameState){
         {
            gameState = EXIT;
         }
+        snake->Event(event);
     }
 }
 
 void Game::Update(){
-
+    snake->Update();
 }
 
 void Game::Render(){
+    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
+    SDL_RenderClear(renderer);
+    snake->Render();
+    SDL_RenderPresent(renderer);
+    
+    
 
+}
+
+void Game::clear(){
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    printf("Game cleared");
 }

@@ -4,20 +4,22 @@
 #include<SDL2/SDL.h>
 #include<stdio.h>
 #include"GameState.h"
+#include"Snake.h"
 
 class Game{
 public:
-    Game();
-    Game(const char* title, int xpos, int ypos, int width, int height);
+    Game(SDL_Window* Window, SDL_Renderer* Renderer);
     ~Game();
 
     void Event(GameState &gameState);
     void Update();
     void Render();
+    void clear();
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
 
+    Snake *snake;
 
 };
 
