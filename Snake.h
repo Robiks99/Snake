@@ -21,12 +21,12 @@ private:
     void SpawnNewSnakeElement();
     void IncreaseSnakeLength();
     void ShowRect();
+    void Collision(SDL_Rect argRect);
 
     int snakeLenght = 15;
     SDL_Rect *rect;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    int xPos, yPos;
     int moveDelay;
     Uint32 startTicks = 0;
     float dT;

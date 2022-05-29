@@ -173,3 +173,25 @@ void Snake::ShowRect(){
     for(int i = 0; i < snakeLenght-1; i++)
     printf("iteracja %i: X:%i, Y:%i, W:%i, H:%i\n",i,rect[i].x,rect[i].y,rect[i].w,rect[i].h);
 }
+
+void Snake::Collision(SDL_Rect argRect){
+    if( (rect[0].y+rect[0].h) <= argRect.y )//check bottom ball side and top rect side
+    {
+        return;
+    }
+
+    if( rect[0].y >= argRect.y+argRect.h )//check top ball side and bottom rect side
+    {
+        return;
+    }
+
+    if( (rect[0].x+rect[0].w) <= argRect.x )//check right ball side and left rect side
+    {
+        return;
+    }
+
+    if( rect[0].x >= (argRect.x+argRect.w) )//check left ball side and right rect side
+    {
+        return;
+    }
+}

@@ -13,9 +13,8 @@ public:
     void Event();
     void Update();
     void Render();
-
+    void Collision();
 private:
-    int xPos, yPos;
     SDL_Rect rect;
     SDL_Window* window;
     SDL_Renderer* renderer;
