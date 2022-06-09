@@ -22,6 +22,7 @@ Game::Game(SDL_Window* Window, SDL_Renderer* Renderer){
 
         //initialize Objects
         snake = new Snake(window, renderer);
+        apple = new Apple(window, renderer);
     }
     else{
         
@@ -46,12 +47,18 @@ void Game::Event(GameState &gameState){
 
 void Game::Update(){
     snake->Update();
+    if(snake->Collision(apple->GetRect())){
+        snake->IncreaseSnakeLength();
+    }
 }
 
 void Game::Render(){
     SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
     SDL_RenderClear(renderer);
+    
+    apple->Render();
     snake->Render();
+    
     SDL_RenderPresent(renderer);
     
     

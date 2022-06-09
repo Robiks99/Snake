@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include"GameState.h"
 #include"Snake.h"
+#include"Apple.h"
 
 class Game{
 public:
@@ -19,7 +20,8 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    Snake *snake;
+    Snake* snake;
+    Apple* apple; 
 
 };
 
