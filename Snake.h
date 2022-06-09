@@ -14,14 +14,15 @@ public:
     void Update();
     void Render();
 
+    bool Collision(SDL_Rect argRect);
+    void IncreaseSnakeLength();
 private:
     void ChangeDirection(SDL_Event &event);
     void Move();
     void BorderCollision();
     void SpawnNewSnakeElement();
-    void IncreaseSnakeLength();
+    
     void ShowRect();
-    void Collision(SDL_Rect argRect);
 
     int snakeLenght = 15;
     SDL_Rect *rect;
