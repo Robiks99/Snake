@@ -6,7 +6,7 @@
 
 class Apple{
 public:
-    Apple();
+    Apple(SDL_Window* argWindow, SDL_Renderer* argRenderer);
     ~Apple();
 
     SDL_Rect GetRect(){return rect;}
