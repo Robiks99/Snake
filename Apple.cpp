@@ -26,6 +26,19 @@ void Apple::Render(){
     SDL_RenderFillRect(renderer, &rect);
 }
 
-void Apple::Collision(){
-    
+void Apple::Collision(SDL_Rect* argRect, int argSnakeLength){
+    int occupiedSpace = 0;
+    while(occupiedSpace < argSnakeLength){
+        rect.x = (rand() % 80)*8;
+        rect.y = (rand() % 60)*8;
+
+        for(int i = 0; i < argSnakeLength; i++ ){
+            if(rect.x == argRect[i].x && rect.y == argRect[i].y){
+                i = argSnakeLength;
+            }
+            else{
+                occupiedSpace++;
+            }
+        }
+    }
 }

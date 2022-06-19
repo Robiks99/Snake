@@ -3,6 +3,8 @@
 
 #include"SDL2/SDL.h"
 #include<stdio.h>
+#include <cstdlib>
+#include <ctime>
 
 class Apple{
 public:
@@ -13,7 +15,7 @@ public:
     void Event();
     void Update();
     void Render();
-    void Collision();
+    void Collision(SDL_Rect* argRect, int argSnakeLength);
 private:
     SDL_Rect rect;
     SDL_Window* window;
