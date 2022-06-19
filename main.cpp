@@ -2,6 +2,7 @@
 #include "main.h"
 
 int main(int argc, const char* argv[]){
+    srand(time(0));
     gameState = GAME;
     game = new Game(window, renderer);
     while(gameState != EXIT){
