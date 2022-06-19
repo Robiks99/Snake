@@ -33,6 +33,7 @@ void Snake::Event(SDL_Event &event){
 void Snake::Update(){
     Move();
     BorderCollision();
+    SelfCollision();
 }
 
 void Snake::Render(){
@@ -153,7 +154,7 @@ void Snake::SpawnNewSnakeElement(){
 }
 
 void Snake::IncreaseSnakeLength(){
-     //zwiększenie ilości elementów w tablicy
+    //zwiększenie ilości elementów w tablicy
     //przepisz wartości do nowej tablicy
     SDL_Rect *tmp = new SDL_Rect[snakeLenght];
     for(int i = 0; i < snakeLenght; i++){
@@ -167,6 +168,19 @@ void Snake::IncreaseSnakeLength(){
     rect[snakeLenght-1].w = GREED_SIZE;
     rect[snakeLenght-1].h = GREED_SIZE;
     //ShowRect();
+    ShowSnakeLength();
+}
+
+void Snake::DecreaseSnakeLength(int argNewLenght){
+    SDL_Rect *tmp = new SDL_Rect[argNewLenght];
+    for(int i = 0; i < argNewLenght; i++){
+        tmp[i] = rect[i];
+    }
+    snakeLenght = argNewLenght;
+    rect = new SDL_Rect[argNewLenght];
+    for(int i = 0; i < argNewLenght; i++){
+        rect[i] = tmp[i];
+    }
 }
 
 void Snake::ShowRect(){
@@ -195,4 +209,16 @@ bool Snake::Collision(SDL_Rect argRect){
         return false;
     }
     return true;
+}
+
+void Snake::SelfCollision(){
+    for(int i = 2; i < snakeLenght; i++){
+        if(Collision(rect[i])){
+            DecreaseSnakeLength(i);
+        }
+    }
+}
+
+void Snake::ShowSnakeLength(){
+    printf("\nSnake length: %i",snakeLenght);
 }

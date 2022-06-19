@@ -49,7 +49,9 @@ void Game::Update(){
     snake->Update();
     if(snake->Collision(apple->GetRect())){
         snake->IncreaseSnakeLength();
+        apple->Collision(snake->GetRect(), snake->GetSnakeLength());
     }
+    
 }
 
 void Game::Render(){
