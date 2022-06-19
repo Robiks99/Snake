@@ -4,6 +4,8 @@
 #include<SDL2/SDL.h>
 #include "GameState.h"
 #include "Game.h"
+#include <cstdlib>
+#include <ctime>
 GameState gameState;
 Game* game;
 
